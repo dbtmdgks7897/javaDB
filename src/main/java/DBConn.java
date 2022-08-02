@@ -128,7 +128,7 @@ public class DBConn {
 //            e.printStackTrace();
 //        }
         Connection conn = dbConnect();
-        UserDto udto = new UserDto();
+        UserDto udto = null;
 
         try {
             String sql = "select * from `game` where userid=? and userpw=?";
@@ -138,6 +138,7 @@ public class DBConn {
 
             rs = pstmt.executeQuery();
             if (rs.next()) {
+                udto = new UserDto();
                 udto.setName(rs.getString("name"));
                 udto.setMarble(rs.getInt("marble"));
                 udto.setId(rs.getInt("id"));
