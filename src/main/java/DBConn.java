@@ -194,7 +194,7 @@ public class DBConn {
         Connection conn = dbConnect();
 
         try {
-            String sql = "UPDATE `database`.`game` SET `marble`=? WHERE  `id`=?;";
+            String sql = "UPDATE `database`.`game` SET `marble`=?, update_at = NOW() WHERE  `id`=?;";
             pstmt = conn.prepareStatement(sql);
 
             if (plusMarble <= 0) {
@@ -203,7 +203,13 @@ public class DBConn {
             pstmt.setInt(1, plusMarble);
             pstmt.setInt(2, id);
 
-            pstmt.executeQuery();
+            // pstmt.executeQuery();
+            int result = pstmt.executeUpdate();
+            if (result == 0) {
+                System.out.println("저장 실패");
+            } else {
+                System.out.println("저장 성공");
+            }
         } catch (SQLException e) {
             System.out.println("error: " + e);
         } finally {

@@ -21,7 +21,7 @@ public class OddEven {
     // 게임 시작
     public void start(){
         String tmpAnswer = null;
-
+        UserDto udto = null;
         System.out.println("오징어 홀짝 게임");
         System.out.print("아이디가 있습니까? ( y / n ) : ");
         tmpAnswer = sc.next();
@@ -30,7 +30,6 @@ public class OddEven {
                 // 아이디, pw 입력 받고
                 // DB에 있는지 확인
                 // 없으면 다시 입력
-                UserDto udto = null;
                 do{
                     System.out.println("로그인");
                     System.out.print("아이디 : ");
